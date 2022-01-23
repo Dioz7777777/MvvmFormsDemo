@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<views:MvxContentPage
+    x:TypeArguments="vms:Tab2ViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:vms="clr-namespace:MvvmFormsDemo.Core.ViewModels.Home;assembly=MvvmFormsDemo.Core"
+    x:Class="MvvmFormsDemo.UI.Pages.Tab2Page">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Tab 22"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <Image x:Name="ImageControl" Source="home.jpg"/>
+        </StackLayout>
+    </ContentPage.Content>
+</views:MvxContentPage>
