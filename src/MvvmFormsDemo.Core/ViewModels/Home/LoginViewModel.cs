@@ -1,9 +1,12 @@
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 
 namespace MvvmFormsDemo.Core.ViewModels.Home
 {
-    public sealed class LoginViewModel : BaseViewModel
+    public sealed class LoginViewModel : MvxNavigationViewModel
     {
         private string _username;
 
@@ -39,20 +42,22 @@ namespace MvvmFormsDemo.Core.ViewModels.Home
 
         public MvxAsyncCommand LoginCommand { get; }
 
-        public LoginViewModel()
+        public LoginViewModel(ILoggerFactory logFactory, IMvxNavigationService navigationService)
+            : base(logFactory, navigationService)
         {
-            LoginCommand = new MvxAsyncCommand(async () => await LoginAsync());
-            IsLoginButtonEnabled = true;
+            LoginCommand = new MvxAsyncCommand(Login);
         }
 
-        private Task LoginAsync()
+        private Task Login()
         {
-            return Task.CompletedTask;
+            return Task.WhenAll(
+                NavigationService.Close(this),
+                NavigationService.Navigate<TabsRootViewModel>());
         }
 
         private void CheckUsernameAndPassword()
         {
-            if (string.IsNullOrWhiteSpace(Username) && string.IsNullOrWhiteSpace(Password))
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
                 IsLoginButtonEnabled = false;
             }

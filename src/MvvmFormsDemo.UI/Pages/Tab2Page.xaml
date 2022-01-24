@@ -7,11 +7,8 @@
     xmlns:vms="clr-namespace:MvvmFormsDemo.Core.ViewModels.Home;assembly=MvvmFormsDemo.Core"
     x:Class="MvvmFormsDemo.UI.Pages.Tab2Page">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Tab 22"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-            <Image x:Name="ImageControl" Source="home.jpg"/>
+        <StackLayout VerticalOptions="Center">
+            <CollectionView></CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

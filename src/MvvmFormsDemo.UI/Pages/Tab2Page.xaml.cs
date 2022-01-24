@@ -1,4 +1,5 @@
 using MvvmCross.Forms.Presenters.Attributes;
+using Xamarin.Forms;
 
 namespace MvvmFormsDemo.UI.Pages
 {
@@ -10,6 +11,8 @@ namespace MvvmFormsDemo.UI.Pages
         public Tab2Page()
         {
             InitializeComponent();
+            IconImageSource = ImageSource.FromResource(
+                "MvvmFormsDemo.UI.Resources.Images.list.png");
         }
     }
 }

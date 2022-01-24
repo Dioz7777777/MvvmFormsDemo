@@ -48,6 +48,8 @@
     <None Remove="outline_home_black_24dp.png" />
     <None Remove="home.svg" />
     <None Remove="home_48.png" />
+    <None Remove="Resources\Images\list.png" />
+    <EmbeddedResource Include="Resources\Images\list.png" />
   </ItemGroup>
 
 </Project>
