@@ -5,10 +5,42 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:vms="clr-namespace:MvvmFormsDemo.Core.ViewModels.Home;assembly=MvvmFormsDemo.Core"
-    x:Class="MvvmFormsDemo.UI.Pages.Tab2Page">
+    x:Class="MvvmFormsDemo.UI.Pages.Tab2Page"
+    x:DataType="vms:Tab2ViewModel">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
-            <CollectionView></CollectionView>
+            <CollectionView
+                x:Name="HeaderCollection"
+                ItemSizingStrategy="MeasureFirstItem"
+                ItemsSource="{Binding Initiatives}"
+                SelectionMode="Single"
+                SelectionChangedCommand="{Binding HeaderTappedCommand}"
+                SelectionChangedCommandParameter="{Binding SelectedItem, Source = {x:Reference HeaderCollection}}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vms:ItemHeader">
+                        <Frame>
+
+                            <StackLayout>
+                                <Label Text="{Binding Label}" HorizontalOptions="Center" />
+                                <CollectionView
+                                    IsVisible="{Binding IsElapsed}"
+                                    ItemSizingStrategy="MeasureFirstItem"
+                                    ItemsSource="{Binding Items}"
+                                    SelectionMode="Single">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="vms:ItemChild">
+                                            <StackLayout>
+                                                <Label Text="{Binding Name}" />
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.GroupHeaderTemplate></CollectionView.GroupHeaderTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

@@ -13,7 +13,7 @@ namespace MvvmFormsDemo.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<LoginViewModel>();
+            RegisterAppStart<TabsRootViewModel>();
         }
     }
 }
